@@ -76,10 +76,10 @@ router.post('/', auth, async (req, res) => {
     // Create artist objects
     const artistFields = {};
     artistFields.user = req.user.id;
-    if(retrievedArtist.website) {artistFields.website = website;}
-    if(retrievedArtist.location) {artistFields.location = location;}
-    if(retrievedArtist.status) {artistFields.status = status;}
-    if(retrievedArtist.biography) {artistFields.bio = bio;}
+    if(retrievedArtist.website) {artistFields.website = retrievedArtist.website;}
+    if(retrievedArtist.location) {artistFields.location = retrievedArtist.location;}
+    if(retrievedArtist.status) {artistFields.status = retrievedArtist.status;}
+    if(retrievedArtist.biography) {artistFields.bio = retrievedArtist.biography;}
     if(retrievedArtist.bands) {
         artistFields.bands = retrievedArtist.bands.split(',').map(band => band.trim());
     }
@@ -89,11 +89,12 @@ router.post('/', auth, async (req, res) => {
 
     // Create social object
     artistFields.social = {};
-    if(retrievedArtist.youtube) {artistFields.social.youtube = youtube;}
-    if(retrievedArtist.twitter) {artistFields.social.twitter = twitter;}
-    if(retrievedArtist.instagram) {artistFields.social.instagram = instagram;}
-    if(retrievedArtist.linkedin) {artistFields.social.linkedin = linkedin;}
-    if(retrievedArtist.facebook) {artistFields.social.facebook = facebook;}
+    if(retrievedArtist.youtube) {artistFields.social.youtube = retrievedArtist.youtube;}
+    if(retrievedArtist.twitter) {artistFields.social.twitter = retrievedArtist.twitter;}
+    if(retrievedArtist.instagram) {artistFields.social.instagram = retrievedArtist.instagram;}
+    if(retrievedArtist.linkedin) {artistFields.social.linkedin = retrievedArtist.linkedin;}
+    if(retrievedArtist.facebook) {artistFields.social.facebook = retrievedArtist.facebook;}
+    if(retrievedArtist.bandcamp) {artistFields.social.bandcamp = retrievedArtist.bandcamp;}
 
     try {
         let artist = await Artist.findOne({user: req.user.id});
@@ -158,7 +159,7 @@ router.put('/education', [auth, [
     try {
         // Find the artist
         const artist = await Artist.findOne({user: req.user.id});
-        // Add education to experience array
+        // Add education to experience array at the beggining
         artist.education.unshift(education);
         await artist.save();
 

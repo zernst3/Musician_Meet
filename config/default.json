@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://zernst3:IshfwIlf1987!@devmeet-qvxxu.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "jwtSecret": "Nutshell",
-    "githubClientId": "889d128d04473ba5d9c5",
-    "githubSecret": "86d036f2bb9c2ac50103109c8e85006ff44c7285"
-}

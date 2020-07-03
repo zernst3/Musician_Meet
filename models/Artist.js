@@ -25,7 +25,8 @@ const ProfileSchema = new mongoose.Schema({
         twitter: {type: String},
         facebook: {type: String},
         linkedin: {type: String},
-        instagram: {type: String}
+        instagram: {type: String},
+        bandcamp: {type: String}
     },
     date: {type: Date, default: Date.now}
 });
